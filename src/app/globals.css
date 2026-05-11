@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f5efe1;
+  --paper-shadow: #e6dfce;
+  --ink: #1a1612;
+  --backdrop: #2b2620;
+}
+
+@theme inline {
+  --color-background: var(--backdrop);
+  --color-foreground: #f5efe1;
+  --font-mono: var(--font-mono-receipt), "JetBrains Mono", "IBM Plex Mono",
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+html,
+body {
+  background: var(--backdrop);
+  color: #efe6d3;
+  font-family: var(--font-mono-receipt), ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, monospace;
+  min-height: 100%;
+}
+
+/* Subtle warm wood/desk texture for the page background */
+body {
+  background-image: radial-gradient(
+      ellipse at top,
+      #3a332a 0%,
+      var(--backdrop) 60%
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.012) 0 1px,
+      transparent 1px 3px
+    );
+}
+
+/* Receipt paper — warm sepia, with paper texture and torn-tape feel */
+.receipt-paper {
+  background-color: var(--paper);
+  color: var(--ink);
+  background-image:
+    /* dot/grain noise */
+    radial-gradient(rgba(60, 40, 20, 0.06) 1px, transparent 1px),
+    /* horizontal print-band */
+      repeating-linear-gradient(
+        0deg,
+        rgba(60, 40, 20, 0.025) 0 1px,
+        transparent 1px 3px
+      );
+  background-size:
+    3px 3px,
+    100% 3px;
+  box-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.05) inset,
+    0 30px 60px -20px rgba(0, 0, 0, 0.55),
+    0 8px 18px -6px rgba(0, 0, 0, 0.45);
+  border-radius: 1px;
+}
+
+/* Top zig-zag torn edge */
+.receipt-paper::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background:
+    linear-gradient(135deg, var(--paper) 50%, transparent 50%) 0 0 / 12px 12px
+      repeat-x,
+    linear-gradient(225deg, var(--paper) 50%, transparent 50%) 6px 0 / 12px 12px
+      repeat-x;
+  filter: drop-shadow(0 -1px 0 rgba(0, 0, 0, 0.05));
+}
+
+/* Bottom torn edge container — paper extends through, then jaggies */
+.receipt-tear {
+  background:
+    linear-gradient(135deg, transparent 50%, var(--paper) 50%) 0 100% / 12px 12px
+      repeat-x,
+    linear-gradient(225deg, transparent 50%, var(--paper) 50%) 6px 100% / 12px
+      12px repeat-x;
+  background-color: transparent;
+  /* Pull the paper color upward */
+  box-shadow: 0 -1px 0 var(--paper);
+}
+
+/* Print-feed entrance — receipt slides down out of the printer slot */
+@keyframes receipt-feed {
+  0% {
+    transform: translateY(-100%);
+    clip-path: inset(0 0 100% 0);
+  }
+  100% {
+    transform: translateY(0);
+    clip-path: inset(0 0 0% 0);
+  }
+}
+
+.receipt-feed {
+  animation: receipt-feed 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-origin: top center;
+}
+
+/* Printer slot above receipt */
+.printer-slot {
+  height: 14px;
+  background:
+    linear-gradient(180deg, #1a1612 0%, #0a0805 60%, #1a1612 100%);
+  border-radius: 4px;
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(255, 255, 255, 0.04);
+  width: 360px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.printer-slot::after {
+  content: "";
+  position: absolute;
+  inset: 4px 8px;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.06) 0 4px,
+    transparent 4px 8px
+  );
+  border-radius: 2px;
+}
+
+/* Form controls */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  border-radius: 2px;
+  border: 1px solid rgba(245, 239, 225, 0.2);
+  background: #efe6d3;
+  color: #1a1612;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 0.08s ease,
+    background 0.15s ease,
+    opacity 0.15s ease;
+}
+.btn:hover:not(:disabled) {
+  background: #fff7e3;
+}
+.btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.btn-ghost {
+  background: transparent;
+  color: #efe6d3;
+  border: 1px solid rgba(245, 239, 225, 0.25);
+}
+.btn-ghost:hover:not(:disabled) {
+  background: rgba(245, 239, 225, 0.06);
+}
+
+.input {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  font-family: inherit;
+  font-size: 0.78rem;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(245, 239, 225, 0.18);
+  border-radius: 2px;
+  color: #efe6d3;
+  outline: none;
+}
+.input:focus {
+  border-color: #efe6d3;
+}

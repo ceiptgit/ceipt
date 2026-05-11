@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <clipPath id="paper">
+      <path d="M30,20 H170 V165
+        L162,172 L154,166 L146,172 L138,166 L130,172 L122,166 L114,172 L106,166
+        L98,172 L90,166 L82,172 L74,166 L66,172 L58,166 L50,172 L42,166 L34,172 L30,168 Z"/>
+    </clipPath>
+  </defs>
+
+  <rect width="200" height="200" fill="#1a1410"/>
+
+  <g clip-path="url(#paper)">
+    <rect x="30" y="20" width="140" height="155" fill="#f4ecd8"/>
+
+    <text x="100" y="75" text-anchor="middle"
+      font-family="'JetBrains Mono', ui-monospace, monospace"
+      font-weight="700" font-size="42" letter-spacing="2"
+      fill="#1a1410">C</text>
+
+    <g stroke="#1a1410" stroke-width="1.5" stroke-dasharray="2 4" stroke-linecap="round">
+      <line x1="45" y1="95" x2="155" y2="95"/>
+    </g>
+
+    <g fill="#1a1410">
+      <rect x="50" y="108" width="2" height="30"/>
+      <rect x="55" y="108" width="4" height="30"/>
+      <rect x="62" y="108" width="1" height="30"/>
+      <rect x="66" y="108" width="3" height="30"/>
+      <rect x="72" y="108" width="2" height="30"/>
+      <rect x="77" y="108" width="5" height="30"/>
+      <rect x="85" y="108" width="1" height="30"/>
+      <rect x="89" y="108" width="2" height="30"/>
+      <rect x="94" y="108" width="4" height="30"/>
+      <rect x="101" y="108" width="1" height="30"/>
+      <rect x="105" y="108" width="3" height="30"/>
+      <rect x="111" y="108" width="2" height="30"/>
+      <rect x="116" y="108" width="4" height="30"/>
+      <rect x="123" y="108" width="1" height="30"/>
+      <rect x="127" y="108" width="2" height="30"/>
+      <rect x="132" y="108" width="5" height="30"/>
+      <rect x="140" y="108" width="1" height="30"/>
+      <rect x="144" y="108" width="3" height="30"/>
+      <rect x="150" y="108" width="2" height="30"/>
+    </g>
+
+    <text x="100" y="155" text-anchor="middle"
+      font-family="'JetBrains Mono', ui-monospace, monospace"
+      font-weight="500" font-size="8" letter-spacing="3"
+      fill="#3d2f24">CEIPT</text>
+  </g>
+</svg>
